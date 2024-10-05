@@ -1,0 +1,10 @@
+GET http://localhost:5067/games/1"
+
+POST http://localhost:5067/games"
+Content-Type: application/json
+{
+    "name": "Minecarft",
+    "gerne":"Kids and familie",
+    "price":19.99,
+    "releaseDate": "2001-07-08"
+} 
