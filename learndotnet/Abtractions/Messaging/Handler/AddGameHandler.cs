@@ -1,18 +1,30 @@
 using System;
 using learndotnet.Abtractions.Messaging.Repositories;
+using learndotnet.Dtos;
 using MediatR;
 
 namespace learndotnet.Abtractions.Messaging.Handler;
 
-public class AddGameHandler : IRequestHandler<AddGameCommand>
+public class AddGameHandler : IRequestHandler<AddGameCommand,int>
 {
     private readonly IGameRepository _gameRepository;
     public AddGameHandler(IGameRepository gameRepository)
     {
         _gameRepository = gameRepository;
     }
-    public async Task<Unit> Handle(AddGameCommand request, CancellationToken token)
+ public async Task<int> Handle(AddGameCommand request, CancellationToken token)
     {
-        return Unit.Value;
+        // Sử dụng constructor thay vì object initializer
+        var game = new GameDto(
+            Id: 123,  // Bạn có thể truyền Id tùy ý hoặc tự động nếu cần
+            Name: request.Name,
+            Gerne: request.Gerne,
+            Price: request.Price,
+            ReleaseDate: request.ReleaseDate
+        );
+
+        // Nếu repository có phương thức lưu trò chơi, gọi nó ở đây
+        await _gameRepository.AddGameAsync(game);
+        return game.Id;
     }
 }

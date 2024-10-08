@@ -11,14 +11,19 @@ public class GameRepository : IGameRepository
     new(1, "League of legends","Moba",20.88M, new DateOnly(2001,1,2)),
     new(1, "Valorant","Shooter",21.22M, new DateOnly(2001,3,1)),
     ];
-    public async Task AddGameAsync(GameDto newGame) {
-        GameDto game = new(
-            games.Count + 1,
-            newGame.Name,
-            newGame.Gerne,
-            newGame.Price,
-            newGame.ReleaseDate
-        );
-        games.Add(game);
+    public async Task AddGameAsync(GameDto newGame)
+    {
+        // Thực hiện logic ở đây
+        await Task.Run(() =>
+        {
+            GameDto game = new(
+                games.Count + 1,
+                newGame.Name,
+                newGame.Gerne,
+                newGame.Price,
+                newGame.ReleaseDate
+            );
+            games.Add(game);
+        });
     }
 }
