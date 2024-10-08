@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Backend\src\Students\API\" />
+    <Folder Include="Backend\src\Students\Application\Domain\" />
+    <Folder Include="Backend\src\Students\Domain\Events\" />
+    <Folder Include="Backend\src\Students\Domain\ValueObjects\" />
+    <Folder Include="Backend\src\Students\Infrastructure\Services\" />
+    <Folder Include="Backend\src\Students\Validators\" />
     <Folder Include="Frontend\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
