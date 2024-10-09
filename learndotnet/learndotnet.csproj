@@ -7,18 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Backend\src\Students\API\" />
-    <Folder Include="Backend\src\Students\Application\Domain\" />
-    <Folder Include="Backend\src\Students\Domain\Events\" />
-    <Folder Include="Backend\src\Students\Domain\ValueObjects\" />
-    <Folder Include="Backend\src\Students\Infrastructure\Services\" />
-    <Folder Include="Backend\src\Students\Validators\" />
+    <Folder Include="Backend\src\SchoolDB\Application\Domain\" />
+    <Folder Include="Backend\src\SchoolDB\Domain\Events\" />
+    <Folder Include="Backend\src\SchoolDB\Domain\ValueObjects\" />
+    <Folder Include="Backend\src\SchoolDB\Infrastructure\Services\" />
+    <Folder Include="Backend\src\SchoolDB\Validators\" />
     <Folder Include="Frontend\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">

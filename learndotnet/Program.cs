@@ -1,38 +1,36 @@
-using learndotnet.Endpoints;
-using learndotnet.Entities;
 using Microsoft.EntityFrameworkCore;
-using MediatR;
-using learndotnet.Abtractions.Messaging.Repositories;
-using learndotnet.Abtractions.Messaging.Repositories.Repo;
-using learndotnet.Backend.src.Students.Infrastructure.Repositories;
-using learndotnet.Backend.src.Students.Domain.Repositories;
+using learndotnet.Backend.src.SchoolDB.Infrastructure.Repositories;
+using learndotnet.Backend.src.SchoolDB.Domain.Repositories;
+using learndotnet.Backend.src.SchoolDB.Infrastructure.Persistence;
+using learndotnet.Backend.src.SchoolDB.Application.Queries;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Đăng ký Razor Pages
-builder.Services.AddRazorPages();
+// Đăng ký Controllers
+builder.Services.AddControllers();
 
-// Lấy chuỗi kết nối từ cấu hình
+// Lấy chuỗi kết nối từ cấu hình (appsettings.json)
 var connectionString = builder.Configuration.GetConnectionString("SchoolDatabase");
 
-// Cấu hình DbContext với chuỗi kết nối
-builder.Services.AddDbContext<SchoolContext>(options =>
+// Cấu hình DbContext với chuỗi kết nối từ appsettings.json
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
 {
-   options.UseSqlServer("Server=localhost;Database=SchoolDB;User Id=sa;Password=123;Trusted_Connection=False;MultipleActiveResultSets=true;Encrypt=False;");
+   options.UseSqlServer(connectionString);
 });
-
 
 // Đăng ký MediatR
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
-builder.Services.AddTransient<IGameRepository, GameRepository>();
+
+// Đăng ký các repository
 builder.Services.AddTransient<IStudentRepository, StudentRepository>();
-// Sau khi cấu hình tất cả các dịch vụ, khởi tạo ứng dụng
+// Khởi tạo ứng dụng
 var app = builder.Build();
 
-// Ánh xạ các endpoint được định nghĩa trong MapGamesEndpoint
-app.MapGamesEndpoint();
+// Ánh xạ API Controllers
+app.MapControllers();
 
-// Ánh xạ Razor Pages
-app.MapRazorPages();
+// Nếu cần Razor Pages, có thể thêm dòng dưới đây
+// app.MapRazorPages();
 
 app.Run();

@@ -138,3 +138,4 @@ D:\dotnet\learnaspdotnet\learndotnet\bin\Debug\net8.0\runtimes\win\lib\net6.0\Sy
 D:\dotnet\learnaspdotnet\learndotnet\obj\Debug\net8.0\learndotnet.csproj.AssemblyReference.cache
 D:\dotnet\learnaspdotnet\learndotnet\obj\Debug\net8.0\learndotnet.sourcelink.json
 D:\dotnet\learnaspdotnet\learndotnet\obj\Debug\net8.0\learndot.5A8FACC7.Up2Date
+D:\dotnet\learnaspdotnet\learndotnet\bin\Debug\net8.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
